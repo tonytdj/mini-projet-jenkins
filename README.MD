@@ -23,10 +23,19 @@ Sur Jenkins, je vais metter en place une Pipeline
 Sur celle-ci j'ai configuré le GitHub project ainsi qu'une variable String Parameter que j'utiliserai dans mon script Jenkinsfile.
 
 ![image](https://user-images.githubusercontent.com/88394820/221202283-06fbc42a-13b2-4371-a084-9a2e6764f62a.png)
+GitHub hook trigger for GITScm polling est activé.
+![image](https://user-images.githubusercontent.com/88394820/221202810-23816c69-40ae-4011-a634-3574d48c1fb3.png)
+
+Dans la partie Pipeline, j'ai renseigné le répo GIT.
+
+![image](https://user-images.githubusercontent.com/88394820/221203032-d3f20e3d-a663-4123-a52f-6e6510b7cec8.png)
+
+Enfin, j'ai saisie le nom du script Jenkinsfile.
+
+![image](https://user-images.githubusercontent.com/88394820/221203235-c98f58ac-6c26-45a2-a009-319aff19c8cd.png)
 
 
-
-Sur le répo git, j'ai configuré la partie Webhook
+Sur le répo GIT, j'ai configuré la partie Webhook
 
 ![image](https://user-images.githubusercontent.com/88394820/221201530-cac83284-c433-45a8-943b-8715bcfe53c2.png)
 
