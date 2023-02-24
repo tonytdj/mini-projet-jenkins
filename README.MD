@@ -1,21 +1,11 @@
-Static Website Example
+Mini Projet Jenkins
 ----------------------
 
-To be used with Cloud Academy labs.
+ce qu'il faut faire : ![image](https://user-images.githubusercontent.com/88394820/221151523-14c20e4c-0ae0-435c-ae52-32aa86db2027.png)
 
 
-License
 ----------------------
 
-This static website is based on the Dimension template by [HTML5 UP](https://html5up.net/)
+Premièrement, j'ai créé un fork du projet gt 
 
-Creative Commons License
-All of the site templates I create for [HTML5 UP](https://html5up.net/) are licensed under the Creative Commons Attribution 3.0 License, which means you can:
- - Use them for personal stuff
- - Use them for commercial stuff
- - Change them however you like
-
-
-... all for free, yo. In exchange, just give HTML5 UP credit for the design and tell your friends about it :)
-
-More info [here](https://html5up.net/license).
+![image](https://user-images.githubusercontent.com/88394820/221151305-c994d580-5d37-4419-9256-63cf61ac3768.png)
