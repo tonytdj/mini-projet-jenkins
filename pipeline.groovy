@@ -1,16 +1,16 @@
 pipeline {
      environment {
        ID_DOCKER = "${ID_DOCKER_PARAMS}"
-       IMAGE_NAME = "alpinehelloworld"
+       IMAGE_NAME = "website_for_jenkins_miniprojet"
        IMAGE_TAG = "latest"
        // PORT_EXPOSED = "80" à paraméter dans le job obligatoirement
-       APP_NAME = "ulrich"
-       STG_API_ENDPOINT = "ip10-0-1-3-cc7bafssrdn0fvnms4tg-1993.direct.docker.labs.eazytraining.fr"
-       STG_APP_ENDPOINT = "ip10-0-1-3-cc7bafssrdn0fvnms4tg-80.direct.docker.labs.eazytraining.fr"
-       PROD_API_ENDPOINT = "ip10-0-1-4-cc7bafssrdn0fvnms4tg-1993.direct.docker.labs.eazytraining.fr"
-       PROD_APP_ENDPOINT = "ip10-0-1-4-cc7bafssrdn0fvnms4tg-80.direct.docker.labs.eazytraining.fr"
-       INTERNAL_PORT = "5000"
-       EXTERNAL_PORT = "${PORT_EXPOSED}"
+       APP_NAME = "tony"
+       STG_API_ENDPOINT = "ip10-0-5-3-cfscvgaikvfgqgfmgu6g-80.direct.docker.labs.eazytraining.fr"
+       STG_APP_ENDPOINT = "ip10-0-5-3-cfscvgaikvfgqgfmgu6g-80.direct.docker.labs.eazytraining.fr"
+       PROD_API_ENDPOINT = "ip10-0-5-4-cfscvgaikvfgqgfmgu6g-1993.direct.docker.labs.eazytraining.fr"
+       PROD_APP_ENDPOINT = "ip10-0-5-4-cfscvgaikvfgqgfmgu6g-80.direct.docker.labs.eazytraining.fr"
+       INTERNAL_PORT = "80"
+       EXTERNAL_PORT = "80"
        CONTAINER_IMAGE = "${ID_DOCKER}/${IMAGE_NAME}:${IMAGE_TAG}"
 
      }
@@ -42,7 +42,7 @@ pipeline {
            steps {
               script {
                 sh '''
-                    curl http://172.17.0.1:${PORT_EXPOSED} | grep -q "Hello world!"
+                    curl http://172.17.0.1:${PORT_EXPOSED} | grep -q "Dimension"
                 '''
               }
            }
@@ -64,7 +64,7 @@ pipeline {
           steps {
              script {
                sh '''
-                 docker save  ${ID_DOCKER}/$IMAGE_NAME:$IMAGE_TAG > /tmp/alpinehelloworld.tar                 
+                 docker save  ${ID_DOCKER}/$IMAGE_NAME:$IMAGE_TAG > /tmp/${IMAGE_NAME}.tar                 
                '''
              }
           }
@@ -116,11 +116,10 @@ pipeline {
   }
      
   post {
-       success {
-         slackSend (color: '#00FF00', message: "ULRICH - SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL}) - PROD URL => http://${PROD_APP_ENDPOINT} , STAGING URL => http://${STG_APP_ENDPOINT}")
-         }
-      failure {
-            slackSend (color: '#FF0000', message: "ULRICH - FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
-          }   
+    always {
+        script {
+           slackNotifier currentBuild.result
+        }
+        }  
     }     
 }
