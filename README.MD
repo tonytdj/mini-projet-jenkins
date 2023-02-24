@@ -5,7 +5,7 @@ ce qu'il faut faire : Mettre en place une pipilien CI/CD avec test de l'artefact
 
  ![image](https://user-images.githubusercontent.com/88394820/221151523-14c20e4c-0ae0-435c-ae52-32aa86db2027.png)
 
-
+Nous allons utilisaer la plateforme EasyLab pour le Staging et la Production : https://github.com/eazytraining/eazylabs.git
 ----------------------
 
 Premièrement, j'ai créé un fork du projet git https://github.com/diranetafen/static-website-example.git 
@@ -39,7 +39,7 @@ Pour les secrets, j'en ai créé 2 permettant de me connecter au DockerHub (pour
 ![image](https://user-images.githubusercontent.com/88394820/221222187-a2723214-aecc-4906-865d-abda49a9a541.png)
 
 
-Sur le répo GIT, j'ai configuré la partie Webhook
+Sur le répo GIT, j'ai configuré la partie Webhook (j'utilise Nrok pour exposer mon jenkins local sur Internet)
 
 ![image](https://user-images.githubusercontent.com/88394820/221201530-cac83284-c433-45a8-943b-8715bcfe53c2.png)
 
@@ -59,6 +59,8 @@ Après pusieurs test, la pipeline est fonctionnelle :
 
 ![image](https://user-images.githubusercontent.com/88394820/221225628-1df3440b-7cee-4723-9768-63bd35818a81.png)
 
+Sur la Staging : 
+![image](https://user-images.githubusercontent.com/88394820/221229539-3a159d73-3ee3-452e-b3b4-e64f685830ad.png)
 
 Sur la prod : 
 ![image](https://user-images.githubusercontent.com/88394820/221225158-462bfcd7-8a18-468c-b07f-4034e8ec211e.png)
