@@ -1,3 +1,5 @@
+/* ajout library pour notification */
+@Library('shared-library')_
 pipeline {
      environment {
        ID_DOCKER = "${ID_DOCKER_PARAMS}"
