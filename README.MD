@@ -34,6 +34,11 @@ Enfin, j'ai saisie le nom du script Jenkinsfile.
 
 ![image](https://user-images.githubusercontent.com/88394820/221203235-c98f58ac-6c26-45a2-a009-319aff19c8cd.png)
 
+Pour les secrets, j'en ai créé 2 permettant de me connecter au DockerHub (pour povoir pusher mon image) puis un autre pour les notification slack (intégration de la thread ![image](https://user-images.githubusercontent.com/88394820/221222337-6338ee40-6c8a-4a42-aa71-1f8170b7ba43.png) )
+
+![image](https://user-images.githubusercontent.com/88394820/221222187-a2723214-aecc-4906-865d-abda49a9a541.png)
+
+
 
 Sur le répo GIT, j'ai configuré la partie Webhook
 
