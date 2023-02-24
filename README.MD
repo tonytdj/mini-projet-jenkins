@@ -19,3 +19,14 @@ Jenkins a été installé via un docker-compose fournie par Easytranning.
 Sur Jenkins, je vais metter en place une Pipeline
 
 ![image](https://user-images.githubusercontent.com/88394820/221154152-08113f28-e9f4-44d9-a9d1-9cdda9b58bc7.png)
+
+Sur celle-ci j'ai configuré le GitHub project ainsi qu'une variable String Parameter que j'utiliserai dans mon script Jenkinsfile.
+
+![image](https://user-images.githubusercontent.com/88394820/221202283-06fbc42a-13b2-4371-a084-9a2e6764f62a.png)
+
+
+
+Sur le répo git, j'ai configuré la partie Webhook
+
+![image](https://user-images.githubusercontent.com/88394820/221201530-cac83284-c433-45a8-943b-8715bcfe53c2.png)
+
