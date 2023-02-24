@@ -39,8 +39,28 @@ Pour les secrets, j'en ai créé 2 permettant de me connecter au DockerHub (pour
 ![image](https://user-images.githubusercontent.com/88394820/221222187-a2723214-aecc-4906-865d-abda49a9a541.png)
 
 
-
 Sur le répo GIT, j'ai configuré la partie Webhook
 
 ![image](https://user-images.githubusercontent.com/88394820/221201530-cac83284-c433-45a8-943b-8715bcfe53c2.png)
+
+
+Notification : 
+
+![image](https://user-images.githubusercontent.com/88394820/221224036-6644d329-ef7f-44bf-a613-84ad03cc86b4.png)
+
+Sur Jenkins : 
+https://github.com/tonytdj/shared-library
+
+Le répo GIT au sujet des notif : https://github.com/tonytdj/shared-library
+
+![image](https://user-images.githubusercontent.com/88394820/221225299-dbff5e02-e1ff-4ece-b989-6e1ba3aef8a0.png)
+
+Après pusieurs test, la pipeline est fonctionnelle : 
+
+![image](https://user-images.githubusercontent.com/88394820/221225628-1df3440b-7cee-4723-9768-63bd35818a81.png)
+
+
+Sur la prod : 
+![image](https://user-images.githubusercontent.com/88394820/221225158-462bfcd7-8a18-468c-b07f-4034e8ec211e.png)
+
 
