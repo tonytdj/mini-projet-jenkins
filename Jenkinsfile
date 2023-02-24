@@ -1,7 +1,7 @@
 /* ajout library pour notification */
 @Library('shared-library')_
 pipeline {
-     environment {
+    environment {
       ID_DOCKER = "${ID_DOCKER_PARAMS}"
       IMAGE_NAME = "website_for_jenkins_miniprojet"
       IMAGE_TAG = "latest"
@@ -17,17 +17,17 @@ pipeline {
       CONTAINER_IMAGE = "${ID_DOCKER}/${IMAGE_NAME}:${IMAGE_TAG}"
 
      }
-     agent none
-     stages {
-         stage('Build image') {
-             agent any
-             steps {
+    agent none
+    stages {
+      stage('Build image') {
+            agent any
+            steps {
                 script {
                   sh 'docker build -t ${ID_DOCKER}/$IMAGE_NAME:$IMAGE_TAG .'
                 }
-             }
-        }
-        stage('Run container based on builded image') {
+            }
+      }
+      stage('Run container based on builded image') {
             agent any
             steps {
                script {
@@ -39,8 +39,8 @@ pipeline {
                  '''
                }
             }
-       }
-       stage('Test image') {
+      }
+      stage('Test image') {
            agent any
            steps {
               script {
@@ -73,8 +73,8 @@ pipeline {
           }
      }          
           
-     stage ('Login and Push Image on docker hub') {
-          agent any
+    stage ('Login and Push Image on docker hub') {
+        agent any
         environment {
            DOCKERHUB_PASSWORD  = credentials('dockerhub-credentials')
         }            
@@ -88,19 +88,21 @@ pipeline {
           }
       }    
      
-     stage('REVIEW - Deploy app') {
+    stage('REVIEW - Deploy app') {
       agent any
       steps {
           script {
             sh """
-              curl -X POST http://${REVIEW_API_ENDPOINT}/review -H "Content-Type: application/json" -d "{"your_name":"${APP_NAME}","container_image":"${CONTAINER_IMAGE}", "external_port":"${EXTERNAL_PORT}", "internal_port":"${INTERNAL_PORT}"}"'
-
+              echo  {\\"your_name\\":\\"${APP_NAME}\\",\\"container_image\\":\\"${CONTAINER_IMAGE}\\", \\"external_port\\":\\"${EXTERNAL_PORT}\\", \\"internal_port\\":\\"${INTERNAL_PORT}\\"}  > data.json 
+              curl -X POST http://${REVIEW_API_ENDPOINT}/review -H "Content-Type: application/json" --data-binary @data.json 
+              sleep 30
+              curl -X DELETE http://${REVIEW_API_ENDPOINT}/review -H "Content-Type: application/json" -d "{"your_name":"${APP_NAME}"}"'
             """
           }
         }
      }
 
-     stage('STAGING - Deploy app') {
+    stage('STAGING - Deploy app') {
       agent any
       steps {
           script {
