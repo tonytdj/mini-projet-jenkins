@@ -18,4 +18,4 @@ Jenkins a été installé via un docker-compose fournie par Easytranning.
 
 Sur Jenkins, je vais metter en place une Pipeline
 
-image.png
+![image](https://user-images.githubusercontent.com/88394820/221154152-08113f28-e9f4-44d9-a9d1-9cdda9b58bc7.png)
