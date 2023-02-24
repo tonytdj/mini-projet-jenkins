@@ -2,18 +2,19 @@
 @Library('shared-library')_
 pipeline {
      environment {
-       ID_DOCKER = "${ID_DOCKER_PARAMS}"
-       IMAGE_NAME = "website_for_jenkins_miniprojet"
-       IMAGE_TAG = "latest"
-       // PORT_EXPOSED = "80" à paraméter dans le job obligatoirement
-       APP_NAME = "tony"
-       STG_API_ENDPOINT = "ip10-0-5-3-cfscvgaikvfgqgfmgu6g-1993.direct.docker.labs.eazytraining.fr"
-       STG_APP_ENDPOINT = "ip10-0-5-3-cfscvgaikvfgqgfmgu6g-80.direct.docker.labs.eazytraining.fr"
-       PROD_API_ENDPOINT = "ip10-0-5-4-cfscvgaikvfgqgfmgu6g-1993.direct.docker.labs.eazytraining.fr"
-       PROD_APP_ENDPOINT = "ip10-0-5-4-cfscvgaikvfgqgfmgu6g-80.direct.docker.labs.eazytraining.fr"
-       INTERNAL_PORT = "80"
-       EXTERNAL_PORT = "80"
-       CONTAINER_IMAGE = "${ID_DOCKER}/${IMAGE_NAME}:${IMAGE_TAG}"
+      ID_DOCKER = "${ID_DOCKER_PARAMS}"
+      IMAGE_NAME = "website_for_jenkins_miniprojet"
+      IMAGE_TAG = "latest"
+      APP_NAME = "tony"
+      REVIEW_API_ENDPOINT = "ip10-0-5-5-cfscvgaikvfgqgfmgu6g-1993.direct.docker.labs.eazytraining.fr"
+      REVIEW_APP_ENDPOINT = "ip10-0-5-5-cfscvgaikvfgqgfmgu6g-80.direct.docker.labs.eazytraining.fr"
+      STG_API_ENDPOINT = "ip10-0-5-3-cfscvgaikvfgqgfmgu6g-1993.direct.docker.labs.eazytraining.fr"
+      STG_APP_ENDPOINT = "ip10-0-5-3-cfscvgaikvfgqgfmgu6g-80.direct.docker.labs.eazytraining.fr"
+      PROD_API_ENDPOINT = "ip10-0-5-4-cfscvgaikvfgqgfmgu6g-1993.direct.docker.labs.eazytraining.fr"
+      PROD_APP_ENDPOINT = "ip10-0-5-4-cfscvgaikvfgqgfmgu6g-80.direct.docker.labs.eazytraining.fr"
+      INTERNAL_PORT = "80"
+      EXTERNAL_PORT = "80"
+      CONTAINER_IMAGE = "${ID_DOCKER}/${IMAGE_NAME}:${IMAGE_TAG}"
 
      }
      agent none
@@ -87,6 +88,18 @@ pipeline {
           }
       }    
      
+     stage('REVIEW - Deploy app') {
+      agent any
+      steps {
+          script {
+            sh """
+              curl -X POST http://${REVIEW_API_ENDPOINT}/review -H "Content-Type: application/json" -d "{"your_name":"${APP_NAME}","container_image":"${CONTAINER_IMAGE}", "external_port":"${EXTERNAL_PORT}", "internal_port":"${INTERNAL_PORT}"}"'
+
+            """
+          }
+        }
+     }
+
      stage('STAGING - Deploy app') {
       agent any
       steps {
@@ -98,8 +111,6 @@ pipeline {
           }
         }
      }
-
-
 
      stage('PRODUCTION - Deploy app') {
        when {
