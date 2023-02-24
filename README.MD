@@ -65,4 +65,7 @@ Sur la Staging :
 Sur la prod : 
 ![image](https://user-images.githubusercontent.com/88394820/221225158-462bfcd7-8a18-468c-b07f-4034e8ec211e.png)
 
+Sur Docker Hub : 
+On voit bien l'image qui a été pusher
+![image](https://user-images.githubusercontent.com/88394820/221238140-28491a48-daa4-462d-bb7c-d0a737012170.png)
 
