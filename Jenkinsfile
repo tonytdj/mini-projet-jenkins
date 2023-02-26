@@ -6,8 +6,6 @@ pipeline {
       IMAGE_NAME = "website_for_jenkins_miniprojet"
       IMAGE_TAG = "latest"
       APP_NAME = "tony"
-      REVIEW_API_ENDPOINT = "ip10-0-5-5-cfscvgaikvfgqgfmgu6g-1993.direct.docker.labs.eazytraining.fr"
-      REVIEW_APP_ENDPOINT = "ip10-0-5-5-cfscvgaikvfgqgfmgu6g-80.direct.docker.labs.eazytraining.fr"
       STG_API_ENDPOINT = "ip10-0-5-3-cfscvgaikvfgqgfmgu6g-1993.direct.docker.labs.eazytraining.fr"
       STG_APP_ENDPOINT = "ip10-0-5-3-cfscvgaikvfgqgfmgu6g-80.direct.docker.labs.eazytraining.fr"
       PROD_API_ENDPOINT = "ip10-0-5-4-cfscvgaikvfgqgfmgu6g-1993.direct.docker.labs.eazytraining.fr"
@@ -88,20 +86,6 @@ pipeline {
           }
       }    
      
-    stage('REVIEW - Deploy app') {
-      agent any
-      steps {
-          script {
-            sh """
-              echo  {\\"your_name\\":\\"${APP_NAME}\\",\\"container_image\\":\\"${CONTAINER_IMAGE}\\", \\"external_port\\":\\"${EXTERNAL_PORT}\\", \\"internal_port\\":\\"${INTERNAL_PORT}\\"}  > data.json 
-              curl -X POST http://${REVIEW_API_ENDPOINT}/review -H "Content-Type: application/json" --data-binary @data.json 
-              sleep 30
-              curl -X DELETE http://${REVIEW_API_ENDPOINT}/review -H "Content-Type: application/json" -d "{"your_name":"${APP_NAME}"}"'
-            """
-          }
-        }
-     }
-
     stage('STAGING - Deploy app') {
       agent any
       steps {
