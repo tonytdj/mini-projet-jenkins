@@ -5,4 +5,3 @@ EXPOSE 80
 RUN rm -rf //usr/local/apache2/htdocs/*
 RUN git clone https://github.com/tonytdj/mini-projet-jenkins.git /usr/local/apache2/htdocs
 RUN apt-get remove git -y && apt-get autoremove -y
-#ENTRYPOINT ["/usr/sbin/nginx", "-g", "daemon off;"]
